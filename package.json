@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lucasfdcampos/mk-solutions-backend.git",
+  "author": "Lucas Campos <lucascampos.ads@gmail.com>",
+  "license": "MIT"
+}
