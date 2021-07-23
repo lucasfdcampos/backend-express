@@ -1,20 +1,25 @@
+import { getCustomRepository } from 'typeorm';
+
 import Lead from '../models/Lead';
 import LeadsRepository from '../repositories/LeadsRepository';
 
 interface RequestDTO {
-  plan: string;
-  client: string;
+  plan_id: string;
+  user_id: string;
+  client_id: string;
 }
 
 class CreateLeadService {
-  private leadsRepository: LeadsRepository;
+  public async execute({
+    plan_id,
+    user_id,
+    client_id,
+  }: RequestDTO): Promise<Lead> {
+    const leadsRepository = getCustomRepository(LeadsRepository);
 
-  constructor(leadsRepository: LeadsRepository) {
-    this.leadsRepository = leadsRepository;
-  }
+    const lead = leadsRepository.create({ plan_id, user_id, client_id });
 
-  public execute({ plan, client }: RequestDTO): Lead {
-    const lead = this.leadsRepository.create({ plan, client });
+    await leadsRepository.save(lead);
 
     return lead;
   }
