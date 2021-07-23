@@ -4,7 +4,11 @@ import { getCustomRepository } from 'typeorm';
 import PlansRepository from '../repositories/PlansRepository';
 import CreatePlanService from '../services/CreatePlanService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const plansRouter = Router();
+
+plansRouter.use(ensureAuthenticated);
 
 plansRouter.get('/', async (request, response) => {
   const plansRepository = getCustomRepository(PlansRepository);

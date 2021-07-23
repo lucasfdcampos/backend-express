@@ -4,7 +4,11 @@ import { getCustomRepository } from 'typeorm';
 import LeadsRepository from '../repositories/LeadsRepository';
 import CreateLeadService from '../services/CreateLeadService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const leadsRouter = Router();
+
+leadsRouter.use(ensureAuthenticated);
 
 leadsRouter.get('/', async (request, response) => {
   const leadsRepository = getCustomRepository(LeadsRepository);
