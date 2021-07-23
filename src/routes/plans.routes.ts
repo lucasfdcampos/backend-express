@@ -19,20 +19,16 @@ plansRouter.get('/', async (request, response) => {
 });
 
 plansRouter.post('/', async (request, response) => {
-  try {
-    const { name, available } = request.body;
+  const { name, available } = request.body;
 
-    const createPlanService = new CreatePlanService();
+  const createPlanService = new CreatePlanService();
 
-    const plan = await createPlanService.execute({
-      name,
-      available,
-    });
+  const plan = await createPlanService.execute({
+    name,
+    available,
+  });
 
-    return response.json(plan);
-  } catch (err) {
-    return response.status(400).json({ error: err.message });
-  }
+  return response.json(plan);
 });
 
 export default plansRouter;

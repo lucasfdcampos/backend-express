@@ -2,6 +2,8 @@ import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
 
+import AppError from '../errors/AppError';
+
 import User from '../models/User';
 import Client from '../models/Client';
 
@@ -20,11 +22,11 @@ class UpdateClientAvatarService {
     avatarFilename,
   }: Request): Promise<Client> {
     if (!avatarFilename) {
-      throw new Error('Invalid or empty file.');
+      throw new AppError('Invalid or empty file.');
     }
 
     if (!client_id) {
-      throw new Error('Invalid client.');
+      throw new AppError('Invalid client.');
     }
 
     const userRepository = getRepository(User);
@@ -32,7 +34,7 @@ class UpdateClientAvatarService {
     const user = await userRepository.findOne(user_id);
 
     if (!user) {
-      throw new Error('Only authenticated users can change avatar');
+      throw new AppError('Only authenticated users can change avatar', 401);
     }
 
     const clientRepository = getRepository(Client);
@@ -40,7 +42,7 @@ class UpdateClientAvatarService {
     const client = await clientRepository.findOne(client_id);
 
     if (!client) {
-      throw new Error('Invalid client.');
+      throw new AppError('Invalid client.');
     }
 
     // Deleta avatar

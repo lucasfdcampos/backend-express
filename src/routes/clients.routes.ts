@@ -25,43 +25,35 @@ clientsRouter.get('/', async (request, response) => {
 });
 
 clientsRouter.post('/', async (request, response) => {
-  try {
-    const { name, cpf, cep, adress, city, uf } = request.body;
+  const { name, cpf, cep, adress, city, uf } = request.body;
 
-    const createClientService = new CreateClientService();
+  const createClientService = new CreateClientService();
 
-    const client = await createClientService.execute({
-      name,
-      cpf,
-      cep,
-      adress,
-      city,
-      uf,
-    });
+  const client = await createClientService.execute({
+    name,
+    cpf,
+    cep,
+    adress,
+    city,
+    uf,
+  });
 
-    return response.json(client);
-  } catch (err) {
-    return response.status(400).json({ error: err.message });
-  }
+  return response.json(client);
 });
 
 clientsRouter.patch(
   '/avatar',
   upload.single('avatar'),
   async (request, response) => {
-    try {
-      const updateClientAvatar = new UpdateClientAvatarService();
+    const updateClientAvatar = new UpdateClientAvatarService();
 
-      const client = await updateClientAvatar.execute({
-        user_id: request.user.id,
-        client_id: request.query.id?.toString(),
-        avatarFilename: request.file?.filename,
-      });
+    const client = await updateClientAvatar.execute({
+      user_id: request.user.id,
+      client_id: request.query.id?.toString(),
+      avatarFilename: request.file?.filename,
+    });
 
-      return response.json(client);
-    } catch (err) {
-      return response.status(400).json({ error: err.message });
-    }
+    return response.json(client);
   },
 );
 

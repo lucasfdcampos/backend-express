@@ -1,5 +1,7 @@
 import { getRepository } from 'typeorm';
 
+import AppError from '../errors/AppError';
+
 import Client from '../models/Client';
 
 interface RequestDTO {
