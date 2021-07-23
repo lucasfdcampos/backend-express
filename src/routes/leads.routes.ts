@@ -1,23 +1,30 @@
 import { Router } from 'express';
+import { getCustomRepository } from 'typeorm';
+
 import LeadsRepository from '../repositories/LeadsRepository';
 import CreateLeadService from '../services/CreateLeadService';
 
 const leadsRouter = Router();
-const leadsRepository = new LeadsRepository();
 
-leadsRouter.get('/', (request, response) => {
-  const leads = leadsRepository.all();
+leadsRouter.get('/', async (request, response) => {
+  const leadsRepository = getCustomRepository(LeadsRepository);
+
+  const leads = await leadsRepository.find();
 
   return response.json(leads);
 });
 
-leadsRouter.post('/', (request, response) => {
+leadsRouter.post('/', async (request, response) => {
   try {
-    const { plan, client } = request.body;
+    const { plan_id, user_id, client_id } = request.body;
 
-    const createLeadService = new CreateLeadService(leadsRepository);
+    const createLeadService = new CreateLeadService();
 
-    const lead = createLeadService.execute({ plan, client });
+    const lead = await createLeadService.execute({
+      plan_id,
+      user_id,
+      client_id,
+    });
 
     return response.json(lead);
   } catch (err) {
