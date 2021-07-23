@@ -1,28 +1,7 @@
 import Lead from '../models/Lead';
+import { EntityRepository, Repository } from 'typeorm';
 
-interface CreateLeadDTO {
-  plan: string;
-  client: string;
-}
-
-class LeadsRepository {
-  private leads: Lead[];
-
-  constructor() {
-    this.leads = [];
-  }
-
-  public all(): Lead[] {
-    return this.leads;
-  }
-
-  public create({ plan, client }: CreateLeadDTO): Lead {
-    const lead = new Lead({ plan, client });
-
-    this.leads.push(lead);
-
-    return lead;
-  }
-}
+@EntityRepository(Lead)
+class LeadsRepository extends Repository<Lead> {}
 
 export default LeadsRepository;
