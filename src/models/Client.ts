@@ -29,6 +29,9 @@ class Client {
   @Column()
   uf: string;
 
+  @Column()
+  avatar: string;
+
   @CreateDateColumn()
   created_at: Date;
 
