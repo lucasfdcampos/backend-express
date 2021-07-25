@@ -6,7 +6,9 @@ import ListLeadService from '@modules/leads/services/ListLeadService';
 
 export default class LeadsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { plan_id, user_id, client_id } = request.body;
+    const { plan_id, client_id } = request.body;
+
+    const user_id = request.user.id;
 
     const createLeadService = container.resolve(CreateLeadService);
 

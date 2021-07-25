@@ -17,7 +17,6 @@ leadsRouter.post(
   celebrate({
     [Segments.BODY]: {
       plan_id: Joi.string().uuid().required(),
-      user_id: Joi.string().uuid().required(),
       client_id: Joi.string().uuid().required(),
     },
   }),

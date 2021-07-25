@@ -22,10 +22,10 @@ interface IRequest {
 class UpdateClientAvatarService {
   constructor(
     @inject('ClientsRepository')
-    private clientRepository: IClientsRepository,
+    private clientsRepository: IClientsRepository,
 
     @inject('UsersRepository')
-    private userRepository: IUsersRepository,
+    private usersRepository: IUsersRepository,
   ) {}
 
   public async execute({
@@ -41,13 +41,13 @@ class UpdateClientAvatarService {
       throw new AppError('Invalid client.');
     }
 
-    const user = await this.userRepository.findById(user_id);
+    const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('Only authenticated users can change avatar', 401);
     }
 
-    const client = await this.clientRepository.findById(client_id);
+    const client = await this.clientsRepository.findById(client_id);
 
     if (!client) {
       throw new AppError('Invalid client.');
@@ -72,7 +72,7 @@ class UpdateClientAvatarService {
 
     client.avatar = avatarFilename;
 
-    await this.clientRepository.save(client);
+    await this.clientsRepository.save(client);
 
     return client;
   }
