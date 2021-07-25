@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateClientService from '@modules/clients/services/CreateClientService';
 import ListClientService from '@modules/clients/services/ListClientService';
@@ -27,6 +28,6 @@ export default class ClientsController {
 
     const clients = await listClientService.execute();
 
-    return response.json(clients);
+    return response.json(classToClass(clients));
   }
 }
