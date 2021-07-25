@@ -6,6 +6,8 @@ import plansRouter from '@modules/plans/infra/http/routes/plans.routes';
 import usersRouter from '@modules/users/infra/http/routes/users.routes';
 import sessionsRouter from '@modules/users/infra/http/routes/sessions.routes';
 
+import cepRouter from '@modules/clients/infra/http/routes/cep.routes';
+
 const routes = Router();
 
 routes.use('/clients', clientsRouter);
@@ -13,5 +15,7 @@ routes.use('/leads', leadsRouter);
 routes.use('/plans', plansRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
+
+routes.use('/cep', cepRouter);
 
 export default routes;
