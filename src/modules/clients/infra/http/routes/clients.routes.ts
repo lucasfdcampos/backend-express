@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { celebrate, Segments, Joi } from 'celebrate';
+
 import multer from 'multer';
 
 import uploadConfig from '@config/upload';
@@ -18,10 +20,28 @@ clientsRouter.use(ensureAuthenticated);
 
 clientsRouter.get('/', clientsController.index);
 
-clientsRouter.post('/', clientsController.create);
+clientsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      cpf: Joi.string().required(),
+      cep: Joi.string().required(),
+      adress: Joi.string().required(),
+      city: Joi.string().required(),
+      uf: Joi.string().required(),
+    },
+  }),
+  clientsController.create,
+);
 
 clientsRouter.patch(
   '/avatar',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+  }),
   upload.single('avatar'),
   clientsAvatarController.update,
 );
