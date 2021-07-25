@@ -23,6 +23,12 @@ class CreatePlanService {
       throw new AppError('Invalid plan.');
     }
 
+    const findPlan = await this.plansRepository.findById(id);
+
+    if (!findPlan) {
+      throw new AppError('Plan not found.');
+    }
+
     const results = await this.plansRepository.delete(id);
 
     return results as number;

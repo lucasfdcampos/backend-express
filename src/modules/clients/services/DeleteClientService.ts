@@ -14,6 +14,12 @@ class DeleteClientService {
       throw new AppError('Invalid client.');
     }
 
+    const findClient = await this.clientRepository.findById(id);
+
+    if (!findClient) {
+      throw new AppError('Client not found.');
+    }
+
     const results = await this.clientRepository.delete(id);
 
     return results as number;
