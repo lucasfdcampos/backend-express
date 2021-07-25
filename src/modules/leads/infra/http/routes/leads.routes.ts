@@ -23,4 +23,28 @@ leadsRouter.post(
   leadsController.create,
 );
 
+leadsRouter.put(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+    [Segments.BODY]: {
+      plan_id: Joi.string().uuid().required(),
+      client_id: Joi.string().uuid().required(),
+    },
+  }),
+  leadsController.update,
+);
+
+leadsRouter.delete(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+  }),
+  leadsController.delete,
+);
+
 export default leadsRouter;

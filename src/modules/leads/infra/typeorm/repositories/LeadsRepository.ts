@@ -12,6 +12,12 @@ class LeadsRepository implements ILeadsRepository {
     this.ormRepository = getRepository(Lead);
   }
 
+  public async findById(id: string): Promise<Lead | undefined> {
+    const lead = await this.ormRepository.findOne(id);
+
+    return lead;
+  }
+
   public async findAll(): Promise<Lead[]> {
     const findAll = await this.ormRepository.find({
       relations: ['plan', 'client', 'user'],
@@ -27,11 +33,21 @@ class LeadsRepository implements ILeadsRepository {
   }
 
   public async create(data: ICreateLeadDTO): Promise<Lead> {
-    const lead = await this.ormRepository.create(data);
+    const lead = this.ormRepository.create(data);
 
     await this.ormRepository.save(lead);
 
     return lead;
+  }
+
+  public async save(lead: Lead): Promise<Lead> {
+    return this.ormRepository.save(lead);
+  }
+
+  public async delete(id: string): Promise<number | null | undefined> {
+    const { affected } = await this.ormRepository.delete(id);
+
+    return affected;
   }
 }
 

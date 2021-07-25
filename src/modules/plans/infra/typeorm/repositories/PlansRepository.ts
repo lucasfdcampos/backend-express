@@ -31,7 +31,7 @@ class PlansRepository implements IPlansRepository {
   }
 
   public async create(data: ICreatePlanDTO): Promise<Plan> {
-    const plan = this.ormRepository.create(data);
+    const plan = await this.ormRepository.create(data);
 
     await this.ormRepository.save(plan);
 

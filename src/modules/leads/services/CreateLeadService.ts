@@ -8,7 +8,7 @@ import IPlansRepository from '@modules/plans/repositories/IPlansRepository';
 
 import Lead from '@modules/leads/infra/typeorm/entities/Lead';
 
-interface RequestDTO {
+interface IRequest {
   plan_id: string;
   user_id: string;
   client_id: string;
@@ -31,7 +31,7 @@ class CreateLeadService {
     plan_id,
     user_id,
     client_id,
-  }: RequestDTO): Promise<Lead> {
+  }: IRequest): Promise<Lead> {
     const client = await this.clientsRepository.findById(client_id);
 
     if (!client) {
@@ -48,7 +48,7 @@ class CreateLeadService {
       throw new AppError('Plan is not available.');
     }
 
-    const lead = this.leadsRepository.create({ plan_id, user_id, client_id });
+    const lead = await this.leadsRepository.create({ plan_id, user_id, client_id });
 
     return lead;
   }

@@ -35,7 +35,7 @@ class CreateClientService {
       throw new AppError('Client already registered.');
     }
 
-    const client = await this.clientRepository.create({
+    const client = this.clientRepository.create({
       name,
       cpf,
       cep,
