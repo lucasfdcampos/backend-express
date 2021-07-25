@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { DeleteResult, getRepository, Repository } from 'typeorm';
 
 import IClientsRepository from '@modules/clients/repositories/IClientsRepository';
 import ICreateClientDTO from '@modules/clients/dtos/ICreateClientDTO';
@@ -40,6 +40,12 @@ class ClientsRepository implements IClientsRepository {
 
   public async save(client: Client): Promise<Client> {
     return this.ormRepository.save(client);
+  }
+
+  public async delete(id: string): Promise<DeleteResult> {
+    const result = await this.ormRepository.delete(id);
+
+    return result;
   }
 }
 

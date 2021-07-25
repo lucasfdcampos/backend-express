@@ -35,6 +35,34 @@ clientsRouter.post(
   clientsController.create,
 );
 
+clientsRouter.put(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      cpf: Joi.string().required(),
+      cep: Joi.string().required(),
+      adress: Joi.string().required(),
+      city: Joi.string().required(),
+      uf: Joi.string().required(),
+    },
+  }),
+  clientsController.update,
+);
+
+clientsRouter.delete(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+  }),
+  clientsController.delete,
+);
+
 clientsRouter.patch(
   '/avatar',
   celebrate({
