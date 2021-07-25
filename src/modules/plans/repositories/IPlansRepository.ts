@@ -6,4 +6,6 @@ export default interface IPlansRepository {
   findByName(name: string): Promise<Plan | undefined>;
   findAll(): Promise<Plan[]>;
   create(data: ICreatePlanDTO): Promise<Plan>;
+  save(plan: Plan): Promise<Plan>;
+  delete(id: string): Promise<number | null | undefined>;
 }

@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { DeleteResult, getRepository, Repository } from 'typeorm';
 
 import IPlansRepository from '@modules/plans/repositories/IPlansRepository';
 import ICreatePlanDTO from '@modules/plans/dtos/ICreatePlanDTO';
@@ -36,6 +36,16 @@ class PlansRepository implements IPlansRepository {
     await this.ormRepository.save(plan);
 
     return plan;
+  }
+
+  public async save(plan: Plan): Promise<Plan> {
+    return this.ormRepository.save(plan);
+  }
+
+  public async delete(id: string): Promise<number | null | undefined> {
+    const { affected } = await this.ormRepository.delete(id);
+
+    return affected;
   }
 }
 

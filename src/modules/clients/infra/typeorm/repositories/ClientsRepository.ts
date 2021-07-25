@@ -42,10 +42,10 @@ class ClientsRepository implements IClientsRepository {
     return this.ormRepository.save(client);
   }
 
-  public async delete(id: string): Promise<DeleteResult> {
-    const result = await this.ormRepository.delete(id);
+  public async delete(id: string): Promise<number | null | undefined> {
+    const { affected } = await this.ormRepository.delete(id);
 
-    return result;
+    return affected;
   }
 }
 

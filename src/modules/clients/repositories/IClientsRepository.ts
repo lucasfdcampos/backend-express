@@ -1,4 +1,3 @@
-import { DeleteResult } from 'typeorm';
 import Client from '@modules/clients/infra/typeorm/entities/Client';
 import ICreateClientDTO from '@modules/clients/dtos/ICreateClientDTO';
 
@@ -8,5 +7,5 @@ export default interface IClientsRepository {
   findAll(): Promise<Client[]>;
   create(data: ICreateClientDTO): Promise<Client>;
   save(client: Client): Promise<Client>;
-  delete(id: string): Promise<DeleteResult>;
+  delete(id: string): Promise<number | null | undefined>;
 }

@@ -23,4 +23,28 @@ plansRouter.post(
   plansController.create,
 );
 
+plansRouter.put(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      available: Joi.boolean().default(true),
+    },
+  }),
+  plansController.update,
+);
+
+plansRouter.delete(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      id: Joi.string().id().required(),
+    },
+  }),
+  plansController.delete,
+);
+
 export default plansRouter;
