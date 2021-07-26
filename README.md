@@ -12,10 +12,10 @@
   </a>
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lucasfdcampos/mk-solutions-backend?color=%2329589D">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/lucasfdcampos/mk-solutions-backend?color=%2329589D">
-  <a href="https://github.com/lucasfdcampos/ecoleta/commits/master">
+  <a href="https://github.com/lucasfdcampos/mk-solutions-backend/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lucasfdcampos/mk-solutions-backend?color=%2329589D">
   </a>
-  <a href="https://github.com/lucasfdcampos/ecoleta/issues">
+  <a href="https://github.com/lucasfdcampos/mk-solutions-backend/issues">
     <img alt="Repository issues" src="https://img.shields.io/github/issues/lucasfdcampos/mk-solutions-backend?color=%2329589D">
   </a>
 </p>
