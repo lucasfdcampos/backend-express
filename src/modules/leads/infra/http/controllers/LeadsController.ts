@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateLeadService from '@modules/leads/services/CreateLeadService';
 import UpdateLeadService from '@modules/leads/services/UpdateLeadService';
@@ -52,6 +53,6 @@ export default class LeadsController {
 
     const leads = await listLeadService.execute();
 
-    return response.json(leads);
+    return response.json(classToClass(leads));
   }
 }

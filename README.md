@@ -175,8 +175,3 @@ Importe o `mk_solutions.json` no Insomnia ou clique em [Run in Insomnia](#insomn
 ```bash
 /leads
 ```
-
-Algumas anotações:
-https://lumbar-mall-a1b.notion.site/MK-Solutions-2adbe12173ae4b56ac59e0cad9f2aec5
-
-
