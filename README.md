@@ -24,8 +24,7 @@
 </p>
 
 <p align="center">
-  <a href="https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Flucasfdcampos%2Fbackend-express%2Fmaster%2Fmk_solutions.json" target="_blank">
-    <img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia">
+  <a href="https://insomnia.rest/run/?label=backend-express&uri=https%3A%2F%2Fraw.githubusercontent.com%2Flucasfdcampos%2Fbackend-express%2Fmaster%2Fcollection.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia">
   </a>
 </p>
 
