@@ -1,22 +1,18 @@
-<h1 align="center">
-  <img src="https://www.mksolutions.com.br/wp-content/uploads/2019/10/logo_mk.png" alt="Logo">
-</h1>
-
 <h3 align="center">
-  Challenge back-end <a href="https://www.mksolutions.com.br/">MK Solutions</a>
+  Back-end Express
 </h3>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/lucasfdcampos/">
     <img alt="Made by" src="https://img.shields.io/badge/made%20by-Lucas%20Campos-%2329589D">
   </a>
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lucasfdcampos/mk-solutions-backend?color=%2329589D">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/lucasfdcampos/mk-solutions-backend?color=%2329589D">
-  <a href="https://github.com/lucasfdcampos/mk-solutions-backend/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lucasfdcampos/mk-solutions-backend?color=%2329589D">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/lucasfdcampos/backend-express?color=%2329589D">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/lucasfdcampos/backend-express?color=%2329589D">
+  <a href="https://github.com/lucasfdcampos/backend-express/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lucasfdcampos/backend-express?color=%2329589D">
   </a>
-  <a href="https://github.com/lucasfdcampos/mk-solutions-backend/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/lucasfdcampos/mk-solutions-backend?color=%2329589D">
+  <a href="https://github.com/lucasfdcampos/backend-express/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/lucasfdcampos/backend-express?color=%2329589D">
   </a>
 </p>
 
@@ -28,7 +24,7 @@
 </p>
 
 <p align="center">
-  <a href="https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Flucasfdcampos%2Fmk-solutions-backend%2Fmaster%2Fmk_solutions.json" target="_blank">
+  <a href="https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2Flucasfdcampos%2Fbackend-express%2Fmaster%2Fmk_solutions.json" target="_blank">
     <img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia">
   </a>
 </p>
@@ -56,13 +52,13 @@ API para um App CRM utilizado por vendedores para registrar Leads.
 ### **Docker**
 
 ```bash
-docker run --name mk_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 ```
 
 ### DataBase
 
 ```bash
-CREATE DATABASE mk_dev
+CREATE DATABASE dev
 ```
 
 ### Projeto
@@ -74,7 +70,7 @@ yarn && yarn dev:server
 
 ## End-points
 
-Importe o `mk_solutions.json` no Insomnia ou clique em [Run in Insomnia](#insomniaButton)
+Importe o `collection.json` no Insomnia ou clique em [Run in Insomnia](#insomniaButton)
 
 
 ### **Usuário**
